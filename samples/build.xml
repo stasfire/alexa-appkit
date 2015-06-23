@@ -1,0 +1,26 @@
+<!-- Ant build script for compiling and running the Echo SDK samples. -->
+<project name="Amazon Echo SDK Samples" default="run" basedir=".">
+    <path id="java.sdk.classpath">
+        <fileset dir="../lib" includes="**/*.jar"/>
+        <fileset dir="../third-party" includes="**/*.jar"/>
+        <pathelement location="."/>
+    </path>
+
+    <property name="disableRequestSignatureCheck" value="false"/>
+    <property name="supportedApplicationIds" value=""/>
+    <property name="timestampTolerance" value="150"/>
+
+    <target name="run">
+        <javac srcdir="." destdir="." classpathref="java.sdk.classpath"/>
+        <java classname="Launcher" classpathref="java.sdk.classpath" fork="true">
+            <sysproperty key="javax.net.ssl.keyStore" value=""/>
+            <sysproperty key="javax.net.ssl.keyStorePassword" value=""/>
+            <sysproperty key="com.amazon.speech.speechlet.servlet.disableRequestSignatureCheck"
+                value="${disableRequestSignatureCheck}"/>
+            <sysproperty key="com.amazon.speech.speechlet.servlet.supportedApplicationIds"
+                value="${supportedApplicationIds}"/>
+            <sysproperty key="com.amazon.speech.speechlet.servlet.timestampTolerance"
+                value="${timestampTolerance}"/>
+        </java>
+    </target>
+</project>

@@ -1,0 +1,17 @@
+{
+  "intents": [
+    {
+      "intent": "MyColorIsIntent",
+      "slots": [
+        {
+          "name": "Color",
+          "type": "LITERAL"
+        }
+      ]
+    },
+    {
+      "intent": "WhatsMyColorIntent",
+      "slots": []
+    }
+  ]
+}
